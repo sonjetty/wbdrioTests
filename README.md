@@ -7,9 +7,11 @@ Note: make sure you have installed java on your computer. If you run into any pr
 
 3. run `npm i` (note: it is unlikely but you may need to run `npm install @wdio/jasmine-framework --save-dev`)
 
-4. Find the `chromedriver.exe` file inside of the project. Once you have found it move the file node_modules>chromedriver>lib
+4. download chromedriver 78 https://chromedriver.storage.googleapis.com/index.html?path=78.0.3904.70/
 
-5. for web testing run `npm run web.browser`
+5. Find the `chromedriver.exe` file inside of the project and delete it. Add the chromdriver file you downloaded to node_modules>chromedriver>lib.
+
+6. for web testing run `npm run web', to run a specific suite (currently there is only 1 suite) run 'npm run web.suite1'
 
 ## Config
 This uses a specific config for iOS and Android, see [configs](./config/) and are based on `wdio.shared.conf.js`.
