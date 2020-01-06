@@ -1,5 +1,5 @@
 {
-  "name": "briostack-uitests",
+  "name": "webdrioTests",
   "version": "1.0.0",
   "description": "Boilerplate project to run WebdriverIO tests with Appium to test native applications on iOS and Android",
   "main": "wdio.conf.js",

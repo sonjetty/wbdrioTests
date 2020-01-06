@@ -19,28 +19,28 @@ reporters: ['dot', 'spec'],
 
 maxInstances: 4,
 capabilities: [
-  //{
-  //  maxInstances: 2,
-  //  browserName: 'chrome',
-  //  chromeOptions: {
-  //    args: [
+  {
+    maxInstances: 2,
+    browserName: 'chrome',
+    chromeOptions: {
+      args: [
         //'--headless',
         //'disable-web-security',
         //'allow-running-insecure-content',
         //'user-data-dir=/Users/joltdev/Library/Application\ Support/Google/Chrome',
         //'profile-directory=Profile\ 2'
-  //    ]}  
-  //},
-  {
-    maxInstances: 2,
-    browserName: 'firefox',
-    "moz:firefoxOptions": {
-      args: [
-        //'-headless'
-      ]
-    },
+      ]}  
+  },
+  //{
+  //  maxInstances: 2,
+  //  browserName: 'firefox',
+  //  "moz:firefoxOptions": {
+  //    args: [
+  //      //'-headless'
+  //    ]
+  //  },
 
-}],
+],
 
 
 
