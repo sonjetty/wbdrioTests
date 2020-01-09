@@ -50,8 +50,10 @@ specs: [
   './tests/specs/web/*.js',
 ],
 suites: {
-    demos: [
-      './tests/specs/web/customerAngularDemo.js'
+    smoke: [
+      //'./tests/specs/web/newCustomerAngular.js',
+      //'./tests/specs/web/newCustomerBindows.js',
+      './tests/specs/web/scheduleAppointment.js'
     ]
 },
 

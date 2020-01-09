@@ -1,7 +1,12 @@
 var basicUtils = require('../../pageobjects/basicUtils.page');
 var customersTab = require('../../pageobjects/customersTab.page');
 
-describe('new customers page test', () => {
+let serviceCategory = [
+    "Bed Bug ",
+    "GPC"
+];
+
+describe('new customers page test bindows', () => {
     it('should log in and then go to the office app', () => {
         basicUtils.loginWebCommand('bryceTester1', 'demo8011')
         basicUtils.goToApp('office')
@@ -42,6 +47,7 @@ describe('new customers page test', () => {
        customersTab.fieldLinearOld.setValue('25')
 
        //fills out fields with dropdowns
+       //this portion should be rewritten after a function has been added to handle bindows dropdowns
        customersTab.dropdownBranchOld.waitForVisible()
        customersTab.dropdownBranchOld.click()
        browser.keys('Raleigh');
@@ -62,7 +68,37 @@ describe('new customers page test', () => {
 
         customersTab.buttonNextOld.click()
 
-        browser.pause(5000) //just so you can see for now
     });
+
+    it('should complete step 2 of creating a new customer', () => {
+       customersTab.checkboxSameAddress.waitForVisible()
+       customersTab.checkboxSameAddress.click()
+       customersTab.radioInvoice.waitForVisible()
+       customersTab.radioInvoice.click()
+       customersTab.buttonNextOld.waitForVisible()
+       customersTab.buttonNextOld.click()
+
+        
+    });
+
+    it('should complete step 3 of creating a new customer', () => {
+       customersTab.serviceCategorySelector(serviceCategory)
+       customersTab.buttonNextOld.waitForVisible()
+       customersTab.buttonNextOld.click()
+
+    });
+
+    it('should schedule service for Bed Bug (steps 4-7)', () => {
+        customersTab.addService(14, 1, 1, 'Test Service 1', 'Inside Sales', 'Berry, Josh', 'Use front door')    
+     });
+
+     it('should schedule service for Fire Ants (steps 8-11)', () => {
+        customersTab.addService(14, 3, 1, 'Test Service 2', 'Inside Sales', 'Berry, Josh', 'Make sure to check cracks')    
+     });
+
+     it('should confirm new customer dialog', () => {
+        customersTab.buttonOK.waitForVisible()
+        customersTab.buttonOK.click()
+     });
 
 });
