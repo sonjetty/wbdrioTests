@@ -4,6 +4,7 @@ Note: make sure you have installed java on your computer. If you run into any pr
 1. From the terminal, clone the git repo — `git clone https://github.com/sonjetty/briostack.git` (Note: You will need to have git installed on your machine)
 
 2. use nvm to install node version 8 (v8.16.2).  (You will need to install nvm first from here: https://github.com/coreybutler/nvm-windows)
+    - the main commands you will want to use are `nvm install <version>` and `nvm use <version>`
 
 3. run `npm i` (note: it is unlikely but you may need to run `npm install @wdio/jasmine-framework --save-dev`)
 
