@@ -1,7 +1,8 @@
 var basicUtils = require('../../pageobjects/basicUtils.page');
 var customersTab = require('../../pageobjects/customersTab.page');
 
-describe('new customers page test', () => {
+
+describe('new customers page test Angular', () => {
     it('should log in and then go to the office app', () => {
         basicUtils.loginWebCommand('bryceTester1', 'demo8011')
         basicUtils.goToApp('office')
@@ -12,27 +13,20 @@ describe('new customers page test', () => {
         basicUtils.tabCustomers.click()
         customersTab.viewNewCustomers.waitForVisible()
         customersTab.viewNewCustomers.click()
+        customersTab.viewNewCustomers.click()
     });
     
     it('should complete step 1 of creating a new customer', () => {
-        //
-        let step1Dropdowns = [
-            "Charlotte", //Branch
-            undefined,  //Account Type
-            undefined,     //Marketing Campaign
-            "Radio",       //Channel
-            "Utah",        //State
-            "Utah",        //County
-            undefined      //Country
-        ];
-
         customersTab.newCustomerButton.waitForVisible()
         customersTab.newCustomerButton.click()
         customersTab.branchDropdown.waitForVisible()
 
-        for (let index = 0; index < step1Dropdowns.length; index++) {
-            customersTab.competeStep1DropdownsAngular(step1Dropdowns[index], index)      
-        }
+        //fills in drowpdowns
+        browser.pause(2000)
+        customersTab.dropdownCompletionAng('Branch', 1, 'Charlotte')
+        customersTab.dropdownCompletionAng('Account Type', 2, 'Commercial')
+        customersTab.dropdownCompletionAng('State', 5, 'Utah')
+        customersTab.dropdownCompletionAng('County', 6, 'Utah')
 
         customersTab.fieldFirstName.setValue('Fred')
         customersTab.fieldLastName.setValue('Smith')
@@ -80,7 +74,7 @@ describe('new customers page test', () => {
     });
 
     it('should complete step 5 of creating a new customer', () => {
-        
+        browser.pause(2000)
         customersTab.dropdownCompletionAng('Preferred Technician', 1, 'Marvin Fisher')
         customersTab.twoWkFollowUp.waitForVisible()
         customersTab.twoWkFollowUp.setValue('100.00')
@@ -92,11 +86,13 @@ describe('new customers page test', () => {
     });
 
     it('should complete step 6 of creating a new customer', () => {
-        //selects 15th of following month
+        //selects random day in following month
+        let randomDay = Math.floor((Math.random() * 28) + 1);
         customersTab.buttonForwardCal.waitForVisible()
         customersTab.buttonForwardCal.click()
-        $('//a[text() = "14"]').waitForVisible()
-        $('//a[text() = "14"]').click()
+        browser.pause(500)
+        $(`//a[text() = "${randomDay}"]`).waitForVisible()
+        $(`//a[text() = "${randomDay}"]`).click()
 
         //selects the first appointment window
         $('(//div[@class = "table"])[2]//td').waitForVisible()
@@ -107,19 +103,11 @@ describe('new customers page test', () => {
         customersTab.buttonNext.click() 
     });
 
-    it('should complete step 7 and complete signature', () => {
-        const signature = '//brio-signature-field';
+    it('should complete step 7 of creating a new customer', () => {
         customersTab.checkboxCustomerSign.waitForExist()
         customersTab.checkboxCustomerSign.scroll()
         browser.pause(1000)
-        customersTab.checkboxCustomerSign.click()
-        customersTab.fieldSignature.scroll()
-        browser.pause(1000)
-        customersTab.fieldSignature.moveToObject(10, 10)
-        browser.buttonDown(0);
-        customersTab.fieldSignature.moveToObject(10, 11)
-        browser.buttonUp(0);
-
+        customersTab.checkboxTechCollectAng.click()
         customersTab.buttonFinish.scroll()
         browser.pause(500)
         customersTab.buttonFinish.click()

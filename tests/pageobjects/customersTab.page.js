@@ -101,6 +101,7 @@ class customersTab extends Page {
         get spinnerStructSqFt () { return $('//p-spinner[@formcontrolname = "structureSqFt"]//input'); }
         get spinnerLinearFt () { return $('//p-spinner[@formcontrolname = "linearFt"]//input'); }
         get loadMask () { return $('//div[@id = "loadMask"]'); }
+        get asyncLoadMask () { return $('//div[@id = "asyncLoadMask"]'); }
         //Step 2 Selectors
         get buttonAddService () { return $('//span[text() = "Add Service"]'); }
         //Step 3 Selectors
@@ -115,71 +116,77 @@ class customersTab extends Page {
         get buttonForwardCal () { return $('//span[@class = "fa fa-angle-right"]'); }
         get buttonBackCal () { return $('//span[@class = "fa fa-angle-left"]'); }
         //Step 7 Selectors
-        get checkboxTechCollectAng () { return $('//span[@class = "ui-chkbox-icon ui-clickable"]'); }
+        get checkboxTechCollectAng () { return $('//*[@label= "Tech to collect agreement signature"]'); }
         get checkboxCustomerSign () { return $('//div[@class = "terms-checkbox"]'); }
         get fieldSignature () { return $('//brio-signature-field'); }
         get buttonFinish () { return $('//span[text() = "Finish"]'); }
 
         //************Primary Customers Page View Selectors Bindows***************
         get fieldAccountId () { return $('//div[text() = "Account Id:"]/following-sibling::input[1]'); }
-        get buttonFind () { return $('//div[text() = "Account Id:"]/following-sibling::input[1]'); }
+        get buttonFind () { return $('//div[text() = "Find"]'); }
         get perspectTicketsAppts () { return $('//div[text() = "Tickets & Appts"]'); }
-        get buttonNewAppt () { return $('//div[text() = "Tickets & Appts"]'); }
+        get perspectBilling () { return $('//div[text() = "Billing"]'); }
+        get optionBillingAccount () { return $('//td[text()="Account"]'); }
+        get optionBillingPayMethods () { return $('//td[text()="Payment Methods"]'); }
+        get optionBillingDiscounts () { return $('//td[text()="Discounts"]'); }
+        get optBillRClickRecievePayment () { return $('//td[text()="Discounts"]'); }
+        get buttonNewAppt () { return $('//div[text() = "New Appointment"]'); }
+        get valueAccountBalance () { return $('//div[text() = "Account Balance:"]/following-sibling::div[1]'); }
+
+        //************New Appointment Selectors Bindows***************
+        get buttonContinueCategory () { return $('(//button[text() =  "Continue"])[1]'); }
+        get buttonContinueDetails () { return $('(//button[text() =  "Continue"])[2]'); }
+        get dropdownApptType () { return $('//select[@ng-model="params.serviceTypeId"]'); }
+        get dropdownPriority () { return $('//select[@ng-model="params.priority"]'); }
+        get buttonFinishNewAppt () { return $('//select[@ng-model="params.priority"]'); }
+        get dialogTitleSchedule () { return $('//*[text()[contains(.," New Appointment - Schedule")]]'); }
+        get buttonFinishNewAppt () { return $('//button[text() = "Finish"]'); }
+
+        //************Recieve Payment Selectors Bindows***************
+        get accountBalance() { return $('//span[text() = "Account Balance:"]'); }
+        get dropdownService () { return $('//label[text() = "Any"]'); }
+        get fieldPaymentAmount () { return $('//input[@type = "number"]'); }
+        get dropdownPaymentMethod () { return $('//label[text() = "Select a payment method..."] '); }
+        get buttonReceivePayment () { return $('//span[text() = "Receive Payment"]'); }
+ 
         
         /**
          * define or overwrite page methods
          */
         
-        //fills out all dropdowns for step 1 of adding a new customer, this should be deprectated to use the new dropdownCompletionAng
-        competeStep1DropdownsAngular (step1Dropdown, index){
-            let step1DropdownSelectors = [
-                'Branch',
-                'Account Type',
-                'Marketing Campaign',
-                'Channel',
-                'State',
-                'County',
-                'Country'
-            ];
-            if(step1Dropdown != undefined){
-                this.loadMask.waitForVisible(2000, true)
-                $(`//div[text() = " ${step1DropdownSelectors[index]} "]/p-dropdown`).scroll();
-                this.loadMask.waitForVisible(2000, true)
-                $(`//div[text() = " ${step1DropdownSelectors[index]} "]/p-dropdown`).waitForVisible();
-                this.loadMask.waitForVisible(2000, true)
-                $(`//div[text() = " ${step1DropdownSelectors[index]} "]/p-dropdown`).click();
-                this.loadMask.waitForVisible(2000, true)
-                $(`(//input[@class = "ui-dropdown-filter ui-inputtext ui-widget ui-state-default ui-corner-all"])[${index+1}]`).waitForVisible()
-                $(`(//input[@class = "ui-dropdown-filter ui-inputtext ui-widget ui-state-default ui-corner-all"])[${index+1}]`).setValue(step1Dropdown)
-                this.loadMask.waitForVisible(2000, true)
-                $(`//span[text() = "${step1Dropdown}"]`).waitForVisible();
-                $(`//span[text() = "${step1Dropdown}"]`).click();
-            }
-    
-        }
-
         dropdownCompletionAng (dropdownName, dropdownIndex, selection){
-            this.loadMask.waitForVisible(2000, true)
+            //let dropdown = $(`//div[text() = " ${dropdownName} "]/p-dropdown`); 
+            browser.pause(500)
+            this.loadMask.waitForVisible(5000, true)
+            this.asyncLoadMask.waitForVisible(5000, true)
             $(`//div[text() = " ${dropdownName} "]/p-dropdown`).waitForExist();
+            this.loadMask.waitForVisible(4000, true)
+            this.asyncLoadMask.waitForVisible(4000, true)
             $(`//div[text() = " ${dropdownName} "]/p-dropdown`).scroll();
-            this.loadMask.waitForVisible(2000, true)
-            $(`//div[text() = " ${dropdownName} "]/p-dropdown`).waitForVisible();
-            this.loadMask.waitForVisible(2000, true)
+            this.loadMask.waitForVisible(4000, true)
+            this.asyncLoadMask.waitForVisible(4000, true)
             $(`//div[text() = " ${dropdownName} "]/p-dropdown`).click();
-            this.loadMask.waitForVisible(2000, true)
+            this.loadMask.waitForVisible(4000, true)
+            this.asyncLoadMask.waitForVisible(4000, true)
             $(`(//input[@class = "ui-dropdown-filter ui-inputtext ui-widget ui-state-default ui-corner-all"])[${dropdownIndex}]`).waitForVisible()
+            this.loadMask.waitForVisible(4000, true)
+            this.asyncLoadMask.waitForVisible(4000, true)
             $(`(//input[@class = "ui-dropdown-filter ui-inputtext ui-widget ui-state-default ui-corner-all"])[${dropdownIndex}]`).setValue(selection)
-            //browser.keys(step1Dropdown);
-            this.loadMask.waitForVisible(2000, true)
+            this.loadMask.waitForVisible(4000, true)
+            this.asyncLoadMask.waitForVisible(4000, true)
             $(`//span[text() = "${selection}"]`).waitForVisible();
+            this.loadMask.waitForVisible(4000, true)
+            this.asyncLoadMask.waitForVisible(4000, true)
             $(`//span[text() = "${selection}"]`).click();
+            this.loadMask.waitForVisible(4000, true)
+            this.asyncLoadMask.waitForVisible(4000, true)
         }
 
         serviceCategorySelector (serviceCategories){
             for (let index = 0; index < serviceCategories.length; index++) {
                 $(`//div[text() = "${serviceCategories[index]}"]/input`).waitForVisible();
                 $(`//div[text() = "${serviceCategories[index]}"]/input`).click();
-                
+                browser.pause(1000)
             }
     
         }
@@ -196,14 +203,16 @@ class customersTab extends Page {
             $(`//div[text() = "${day}"]`).waitForVisible()
             $(`//div[text() = "${day}"]`).click()
             $('(//div[@class = "modal-dialog"])[2]').waitForVisible()
-            $('(//div[@class = "modal-dialog"])[2]').waitForVisible(5000, true)
-    
+
+            if (this.dialogTitleSchedule.isVisible() != true){
+                $('(//div[@class = "modal-dialog"])[2]').waitForVisible(5000, true)
+            }
         }
 
         rowSelectorBindows (tabIndex, row){
             $(`//div[@tabindex = "${tabIndex}"]//div[@ng-style = "rowStyle(row)"][${row}]`).waitForExist();
             $(`//div[@tabindex = "${tabIndex}"]//div[@ng-style = "rowStyle(row)"][${row}]`).scroll();
-            browser.pause(600)
+            browser.pause(1000)
             $(`//div[@tabindex = "${tabIndex}"]//div[@ng-style = "rowStyle(row)"][${row}]`).waitForVisible();
             $(`//div[@tabindex = "${tabIndex}"]//div[@ng-style = "rowStyle(row)"][${row}]`).click();
     
@@ -227,6 +236,7 @@ class customersTab extends Page {
             this.inputSalesOffice.waitForVisible()
             this.inputSalesOffice.setValue(salesOffice)
             this.inputSalesOffice.click()
+            this.inputSalesOffice.click()
             this.fieldSalesRep.waitForVisible()
             this.fieldSalesRep.click()
             this.inputSalesRep.waitForVisible()
@@ -239,6 +249,8 @@ class customersTab extends Page {
 
             this.followingMonthDaySelector(day)
             this.rowSelectorBindows(tabIndex, row)
+
+            browser.pause(500)
             if(this.buttonNextOld.isVisible()){
                 this.buttonNextOld.waitForVisible()
                 this.buttonNextOld.click()
@@ -251,12 +263,46 @@ class customersTab extends Page {
 
     //*************************Functions for primary bindows page***********************************/
         customerSelectorById (id){
-            customersTab.fieldAccountId.waitForVisible()
-            customersTab.fieldAccountId.setValue(id)
-            customersTab.buttonFind.waitForVisible()
-            customersTab.buttonFind.click()
+            if (browser.desiredCapabilities.browserName === 'firefox'){
+                browser.pause(5000)
+            }    
+            this.fieldAccountId.waitForVisible()
+            this.fieldAccountId.click()
+            this.fieldAccountId.setValue(id)
+            this.buttonFind.waitForVisible()
+            this.buttonFind.moveToObject()
+            browser.buttonDown()
+            browser.buttonUp()
             $(`//td[text() = "${id}"]`).waitForVisible()
             $(`//td[text() = "${id}"]`).click()
+    
+        }
+
+        billingRightClickOptionSelect (index){
+
+            const option = [
+                "Export",
+                "Show Cancelled & Failed",
+                "New Invoice...",
+                "New Credit...",
+                "Receive Payment...",
+                "Receive Prepayment...",
+                "Cancel...",
+                "Reinstate...",
+                "Application...",
+                "Download Statement...",
+                "Email Statement..."
+            ];
+            if (browser.desiredCapabilities.browserName === 'firefox'){
+                browser.pause(1000) 
+                browser.url('https://test.briostack.com/office/customers/search(popup:popup/customers/1253555/receivePayment)');
+            }else{
+                browser.pause(1000)
+                $('(//div[@class="bi-tree-view-headers"])[2]').waitForVisible();
+                browser.rightClick('(//div[@class="bi-tree-view-headers"])[2]')
+                $(`//td[text()="${option[index]}"]`).waitForVisible();
+                $(`//td[text()="${option[index]}"]`).click();
+            }
     
         }
       

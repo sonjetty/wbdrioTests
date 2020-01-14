@@ -10,6 +10,7 @@ exports.config = {
         // Updated the timeout to 30 seconds due to possible longer appium calls
         // When using XPATH
         defaultTimeoutInterval: 999999,
+        stopSpecOnExpectationFailure: true,
     },
     suites:
         {
@@ -24,10 +25,11 @@ exports.config = {
     deprecationWarnings: true,
     bail: 0,
     baseUrl: 'http://the-internet.herokuapp.com',
-    waitforTimeout: 20000,
+    waitforTimeout: 10000,
     connectionRetryTimeout: 90000,
     connectionRetryCount: 3,
     reporters: ['dot', 'spec'],
+    
 
     // ====================
     // Appium Configuration

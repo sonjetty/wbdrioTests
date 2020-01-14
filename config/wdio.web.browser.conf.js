@@ -7,6 +7,7 @@ runner: 'local',
 framework: 'jasmine',
 jasmineNodeOpts: {
   defaultTimeoutInterval: 100000,
+  stopSpecOnExpectationFailure: true,
 },
 sync: true,
 logLevel: 'verbose',
@@ -17,28 +18,28 @@ connectionRetryTimeout: 90000,
 connectionRetryCount: 3,
 reporters: ['dot', 'spec'],
 
-maxInstances: 4,
+maxInstances: 10,
 capabilities: [
   {
     maxInstances: 2,
     browserName: 'chrome',
     chromeOptions: {
       args: [
-        //'--headless',
+        '--headless',
         //'disable-web-security',
         //'allow-running-insecure-content',
         //'user-data-dir=/Users/joltdev/Library/Application\ Support/Google/Chrome',
         //'profile-directory=Profile\ 2'
       ]}  
   },
-  //{
-  //  maxInstances: 2,
-  //  browserName: 'firefox',
-  //  "moz:firefoxOptions": {
-  //    args: [
-  //      //'-headless'
-  //    ]
-  //  },
+  {
+    maxInstances: 2,
+    browserName: 'firefox',
+    "moz:firefoxOptions": {
+    args: [
+        '-headless'
+    ]}
+  },
 
 ],
 
@@ -51,9 +52,10 @@ specs: [
 ],
 suites: {
     smoke: [
-      //'./tests/specs/web/newCustomerAngular.js',
-      //'./tests/specs/web/newCustomerBindows.js',
-      './tests/specs/web/scheduleAppointment.js'
+      './tests/specs/web/newCustomerAngular.js',
+      './tests/specs/web/newCustomerBindows.js',
+      './tests/specs/web/scheduleAppointment.js',
+      './tests/specs/web/recievePayment.js'
     ]
 },
 
@@ -62,6 +64,7 @@ services: ['selenium-standalone'],
 baseUrl: 'https://test.briostack.com',
 framework: 'jasmine',
 logDir: './logs',
+
 
 afterTest: function (test) {
   if (test.passed) {
