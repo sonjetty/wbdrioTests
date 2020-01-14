@@ -3,7 +3,8 @@
 Note: make sure you have installed java on your computer. If you run into any problems with these steps try closing and reopening the terminal.
 1. From the terminal, clone the git repo — `git clone https://github.com/sonjetty/briostack.git` (Note: You will need to have git installed on your machine)
 
-2. use nvm to install node version 8
+2. use nvm to install node version 8 (v8.16.2).  (You will need to install nvm first from here: https://github.com/coreybutler/nvm-windows)
+    - the main commands you will want to use are `nvm install <version>` and `nvm use <version>`
 
 3. run `npm i` (note: it is unlikely but you may need to run `npm install @wdio/jasmine-framework --save-dev`)
 
@@ -35,5 +36,3 @@ const SELECTORS = {
 Mobile web automation is almost the same as writing tests for desktop browsers. The only difference can be found in the configuration that needs to be used.
 Click [here](./config/wdio.ios.browser.conf.js) to find the config for iOS Safari and [here](./config/wdio.android.browser.conf.js)) for Android Chrome.
 For Android be sure that the lastest version of Chrome is installed, see also [here](./docs/FAQ.md#i-get-the-error-no-chromedriver-found-that-can-automate-chrome-).
-
-For this boilerplate the testcases from the [jasmine-boilerplte](https://github.com/webdriverio/jasmine-boilerplate), created by [Christian Bromann](https://github.com/christian-bromann), are used.
