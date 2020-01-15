@@ -27,7 +27,9 @@ describe('new customers page test bindows', () => {
         browser.frame(iframe)
 
         //fills out regular fields
-        browser.pause(6000)
+        if (browser.desiredCapabilities.browserName === 'firefox'){
+            browser.pause(6000)
+        } 
         customersTab.fieldFirstNameOld.waitForVisible()
         customersTab.fieldFirstNameOld.setValue('Jim')
         customersTab.fieldLastNameOld.waitForVisible()

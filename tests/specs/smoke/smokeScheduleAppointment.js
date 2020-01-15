@@ -22,6 +22,7 @@ describe('add appointment through Customers tab bindows', () => {
         customersTab.perspectTicketsAppts.click()
         customersTab.perspectTicketsAppts.click()
         
+        browser.pause(500)
         customersTab.buttonNewAppt.waitForVisible()
 
         //for some reason an extra click is needed for firefox
@@ -33,7 +34,7 @@ describe('add appointment through Customers tab bindows', () => {
     });
 
     it('should select Bed Bug service category in New Appointment - Category', () => {
-        browser.pause(7000)
+        browser.pause(4000)
         $('//*[text()[contains(.," Bed Bug")]]').waitForVisible();
         $('//*[text()[contains(.," Bed Bug")]]').click();
         customersTab.buttonContinueCategory.waitForVisible()
@@ -73,8 +74,6 @@ describe('add appointment through Customers tab bindows', () => {
     it('should make sure dialog is dissmissed and the appointment appears', () => {
         $('//*[text()[contains(.," New Appointment - Schedule")]]').waitForVisible(5000, true)
         $('//div[text() = "Inspection"]').waitForVisible()
-
-        browser.pause(10000)
 
     });
 

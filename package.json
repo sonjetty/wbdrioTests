@@ -9,7 +9,8 @@
     "ios.app": "wdio ./config/wdio.ios.app.conf.js",
     "ios.browser": "wdio ./config/wdio.ios.browser.conf.js",
     "web": "wdio config/wdio.web.browser.conf.js",
-    "web.suite1": "wdio config/wdio.web.browser.conf.js --suite demos",
+    "web.smoke": "wdio config/wdio.web.browser.conf.js --suite smoke",
+    "web.reg": "wdio config/wdio.web.browser.conf.js --suite regressions",
     "hybridTests": "npm i && npm run web.browser && npm run ios.app"
   },
   "repository": {

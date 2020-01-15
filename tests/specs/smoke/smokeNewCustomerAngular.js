@@ -11,7 +11,9 @@ describe('new customers page test Angular', () => {
     it('should go to the new customers view inside of customers tab', () => {
         basicUtils.tabCustomers.waitForVisible()
         basicUtils.tabCustomers.click()
+        browser.pause(5000)
         customersTab.viewNewCustomers.waitForVisible()
+        customersTab.viewNewCustomers.click()
         customersTab.viewNewCustomers.click()
         customersTab.viewNewCustomers.click()
     });

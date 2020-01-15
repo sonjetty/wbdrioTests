@@ -19,7 +19,6 @@ describe('Recieve payment, Bindows', () => {
         const iframe = $('iframe[src = "/ui/control/bindows"]').value;
         browser.frame(iframe)
 
-        browser.pause(1000)
         customersTab.customerSelectorById('1253555')
         browser.pause(1000)
         customersTab.perspectBilling.waitForVisible()
@@ -45,7 +44,10 @@ describe('Recieve payment, Bindows', () => {
        
         
         //sets the Service to Bed Bug
-        browser.pause(5000)
+        if (browser.desiredCapabilities.browserName === 'firefox'){
+            browser.pause(5000)
+        }
+        
         customersTab.dropdownService.waitForVisible()
         customersTab.dropdownService.click()
         $('//span[contains (text(), "Bed Bug")] ').waitForVisible()
@@ -60,7 +62,8 @@ describe('Recieve payment, Bindows', () => {
         //sets the Payment Amount and finishes
         customersTab.fieldPaymentAmount.waitForVisible()
         customersTab.fieldPaymentAmount.setValue("10.00")
-        browser.pause(1000)
+        //pauses due to fact button clickablilty is delayed
+        browser.pause(500)
         customersTab.buttonReceivePayment.waitForVisible()
         customersTab.buttonReceivePayment.click()
 
