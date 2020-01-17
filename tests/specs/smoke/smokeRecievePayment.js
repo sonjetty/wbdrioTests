@@ -5,7 +5,7 @@ let accountBalance;
 
 describe('Recieve payment, Bindows', () => {
     it('should log in and then go to the office app', () => {
-        basicUtils.loginWebCommand('bryceTester1', 'demo8011')
+        basicUtils.loginWebCommand('admin', 'demo8011')
         basicUtils.goToApp('office')
     });
 
@@ -15,11 +15,11 @@ describe('Recieve payment, Bindows', () => {
     });
     
     it('should select customer and go to Billing > Account', () => {
-        browser.waitForExist('//iframe[@src = "/ui/control/bindows"]')
-        const iframe = $('iframe[src = "/ui/control/bindows"]').value;
+        browser.waitForExist('//iframe[@src = "/uitest/ui/control/bindows"]')
+        const iframe = $('iframe[src = "/uitest/ui/control/bindows"]').value;
         browser.frame(iframe)
 
-        customersTab.customerSelectorById('1253555')
+        customersTab.customerSelectorById('10005')
         browser.pause(1000)
         customersTab.perspectBilling.waitForVisible()
         customersTab.perspectBilling.click()
@@ -41,17 +41,15 @@ describe('Recieve payment, Bindows', () => {
             let accountBalanceClean =  accountBalance.replace(/[^0-9.]/g,'');
             $(`(//div[contains (text(), "${accountBalanceClean}")])[1] `).waitForVisible()
         }
-       
         
-        //sets the Service to Bed Bug
         if (browser.desiredCapabilities.browserName === 'firefox'){
             browser.pause(5000)
         }
-        
-        customersTab.dropdownService.waitForVisible()
-        customersTab.dropdownService.click()
-        $('//span[contains (text(), "Bed Bug")] ').waitForVisible()
-        $('//span[contains (text(), "Bed Bug")] ').click()
+        //sets the Service to Bed Bug(only works if the Service Billing is turned on)
+        //customersTab.dropdownService.waitForVisible()
+        //customersTab.dropdownService.click()
+        //$('//span[contains (text(), "Bed Bug")] ').waitForVisible()
+        //$('//span[contains (text(), "Bed Bug")] ').click()
 
         //sets the Payment Method to Cash
         customersTab.dropdownPaymentMethod.waitForVisible()

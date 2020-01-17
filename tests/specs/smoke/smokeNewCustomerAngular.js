@@ -4,7 +4,7 @@ var customersTab = require('../../pageobjects/customersTab.page');
 
 describe('new customers page test Angular', () => {
     it('should log in and then go to the office app', () => {
-        basicUtils.loginWebCommand('bryceTester1', 'demo8011')
+        basicUtils.loginWebCommand('admin', 'demo8011')
         basicUtils.goToApp('office')
     });
     
@@ -25,7 +25,7 @@ describe('new customers page test Angular', () => {
 
         //fills in drowpdowns
         browser.pause(2000)
-        customersTab.dropdownCompletionAng('Branch', 1, 'Charlotte')
+        customersTab.dropdownCompletionAng('Branch', 1, 'Main Branch')
         customersTab.dropdownCompletionAng('Account Type', 2, 'Commercial')
         customersTab.dropdownCompletionAng('State', 5, 'Utah')
         customersTab.dropdownCompletionAng('County', 6, 'Utah')
@@ -60,8 +60,8 @@ describe('new customers page test Angular', () => {
     it('should complete step 3 of creating a new customer', () => {
         customersTab.fieldServiceNameAng.waitForVisible()
         customersTab.fieldServiceNameAng.setValue('Test Service')
-        customersTab.dropdownCompletionAng('Service Category', 2, 'Bed Bug ')
-        customersTab.dropdownCompletionAng('Marketing Campaign', 3, '2019Winter')
+        customersTab.dropdownCompletionAng('Service Category', 2, 'Bed Bug Service')
+        customersTab.dropdownCompletionAng('Marketing Campaign', 3, 'TestCampaign')
         customersTab.buttonNext.scroll()
         customersTab.buttonNext.click() 
     });
@@ -77,7 +77,6 @@ describe('new customers page test Angular', () => {
 
     it('should complete step 5 of creating a new customer', () => {
         browser.pause(2000)
-        customersTab.dropdownCompletionAng('Preferred Technician', 1, 'Marvin Fisher')
         customersTab.twoWkFollowUp.waitForVisible()
         customersTab.twoWkFollowUp.setValue('100.00')
         customersTab.radioNoAutoPay.scroll()

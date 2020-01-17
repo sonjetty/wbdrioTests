@@ -1,11 +1,13 @@
 var basicUtils = require('../../pageobjects/basicUtils.page');
 var brioSales = require('../../pageobjects/brioSales.page');
+const randomWords = require('random-words');
 
-let accountBalance;
+let firstName;
+let lastName;
 
 describe('Recieve payment, Bindows', () => {
     it('should log in and then go to the sales app', () => {
-        basicUtils.loginWebCommand('bryceTester1', 'demo8011')
+        basicUtils.loginWebCommand('admin', 'demo8011')
         basicUtils.goToApp('sales')
     });
 
@@ -19,12 +21,15 @@ describe('Recieve payment, Bindows', () => {
     });
     
     it('should fill out all contact information', () => {
+        firstName = randomWords();
+        lastName = randomWords();
         brioSales.fieldFirstName.waitForVisible()
-        brioSales.fieldFirstName.setValue('Automated')
+        brioSales.fieldFirstName.setValue(firstName)
         brioSales.fieldLastName.waitForVisible()
-        brioSales.fieldLastName.setValue('Test')
+        brioSales.fieldLastName.setValue(lastName)
         brioSales.buttonLocateAddress.waitForVisible()
         brioSales.buttonLocateAddress.click()
+        
         brioSales.fieldPrimaryPhone.waitForVisible()
         brioSales.fieldPrimaryPhone.setValue('5555555555')
         brioSales.fieldSecondaryPhone.waitForVisible()
@@ -36,9 +41,13 @@ describe('Recieve payment, Bindows', () => {
     });
 
     it('should fill out Lead Information', () => {
-        brioSales.dropdownCompletion('Branch', 5, 'Charlotte')
+        brioSales.dropdownCompletion('Branch', 5, 'Main Branch')
         brioSales.buttonSave.click()
-        browser.pause(10000)
+    });
+
+    it('should verify the new customer is visible on main page', () => {
+        let fullName = firstName + " " + lastName;
+        $(`//td[@title = "${fullName}"]`).waitForVisible();
     });
 
 

@@ -3,7 +3,7 @@ var customersTab = require('../../pageobjects/customersTab.page');
 
 describe('add appointment through Customers tab bindows', () => {
     it('should log in and then go to the office app', () => {
-        basicUtils.loginWebCommand('bryceTester1', 'demo8011')
+        basicUtils.loginWebCommand('admin', 'demo8011')
         basicUtils.goToApp('office')
     });
 
@@ -13,11 +13,11 @@ describe('add appointment through Customers tab bindows', () => {
     });
     
     it('should select customer and go to Tickets & Appts then click on New Appointment button', () => {
-        browser.waitForExist('//iframe[@src = "/ui/control/bindows"]')
-        const iframe = $('iframe[src = "/ui/control/bindows"]').value;
+        browser.waitForExist('//iframe[@src = "/uitest/ui/control/bindows"]')
+        const iframe = $('iframe[src = "/uitest/ui/control/bindows"]').value;
         browser.frame(iframe)
 
-        customersTab.customerSelectorById('1253555')
+        customersTab.customerSelectorById('10005')
         customersTab.perspectTicketsAppts.waitForVisible()
         customersTab.perspectTicketsAppts.click()
         customersTab.perspectTicketsAppts.click()
@@ -45,8 +45,8 @@ describe('add appointment through Customers tab bindows', () => {
         //sets Appointment Type to Inspection
         customersTab.dropdownApptType.waitForVisible()
         customersTab.dropdownApptType.click()
-        $('//option[text() = "Inspection"]').waitForVisible();
-        $('//option[text() = "Inspection"]').click();
+        $('//option[text() = "Initial"]').waitForVisible();
+        $('//option[text() = "Initial"]').click();
         $('//p[text() = "Opened"]').waitForVisible();
 
         //sets Priority to Major
@@ -73,7 +73,7 @@ describe('add appointment through Customers tab bindows', () => {
 
     it('should make sure dialog is dissmissed and the appointment appears', () => {
         $('//*[text()[contains(.," New Appointment - Schedule")]]').waitForVisible(5000, true)
-        $('//div[text() = "Inspection"]').waitForVisible()
+        $('//div[text() = "Initial"]').waitForVisible()
 
     });
 

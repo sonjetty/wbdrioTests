@@ -146,6 +146,8 @@ class customersTab extends Page {
         get statSchedApptHeader () { return $('//h3[text() = "Schedule Appointment"]'); }
         get statApptWindowsHeader () { return $('//div[text() = "Appointment Windows"]'); }
         get toggleSelectTechnicians () { return $('//span[text() = " Technician "]/i'); }
+        get buttonPrevious () { return $('//span[text() = "Previous"]'); }
+        get buttonFinish () { return $('//button[not (@disabled)]//span[text() = "Finish"]'); }
         
         //***********Add New Customer Selectors Angular*************
         get newCustomerButton () { return $('//div/span[@class = "icon-plus"]'); }
@@ -275,7 +277,7 @@ class customersTab extends Page {
         }
 
         nextMonthDaySelector (day){
-            browser.pause(5000)
+            browser.pause(4000)
             this.buttonForwardCal.waitForVisible()
             this.buttonForwardCal.click()
             browser.pause(500)
@@ -318,10 +320,9 @@ class customersTab extends Page {
                 "Download Statement...",
                 "Email Statement..."
             ];
-            //this pause is due to the fact that the right click option is not available immediately when the table loads
             browser.pause(1000) 
             if (browser.desiredCapabilities.browserName === 'firefox'){
-                browser.url('https://test.briostack.com/office/customers/search(popup:popup/customers/1253555/receivePayment)');
+                browser.url('https://testmaster.briostack.com/uitest/office/customers/search(popup:popup/customers/10005/receivePayment)');
             }else{
                 $('(//div[@class="bi-tree-view-headers"])[2]').waitForVisible();
                 browser.rightClick('(//div[@class="bi-tree-view-headers"])[2]')

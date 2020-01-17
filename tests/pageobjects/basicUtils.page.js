@@ -23,7 +23,7 @@ class basicUtils extends Page {
          * define or overwrite page methods
          */
         loginWebCommand (user, password){
-            browser.url('https://test.briostack.com/brycetraining/');
+            browser.url('https://testmaster.briostack.com/uitest/');
             $('//input[@name="USERNAME"]').waitForVisible();
             $('//input[@name="USERNAME"]').setValue(`${user}`);
             $('//input[@name="PASSWORD"]').waitForVisible();

@@ -21,11 +21,11 @@ reporters: ['dot', 'spec'],
 maxInstances: 10,
 capabilities: [
   {
-    maxInstances: 2,
+    maxInstances: 3,
     browserName: 'chrome',
     chromeOptions: {
       args: [
-        '--headless',
+        //'--headless',
         //'disable-web-security',
         //'allow-running-insecure-content',
         //'user-data-dir=/Users/joltdev/Library/Application\ Support/Google/Chrome',
@@ -33,11 +33,11 @@ capabilities: [
       ]}  
   },
   {
-    maxInstances: 2,
+    maxInstances: 3,
     browserName: 'firefox',
     "moz:firefoxOptions": {
     args: [
-        '-headless'
+       // '-headless'
     ]}
   },
 
@@ -48,19 +48,34 @@ capabilities: [
 port: 4444, 
 hostname: '127.0.0.1',
 specs: [
-  './tests/specs/web/*.js',
+  './tests/specs/smoke/*.js',
+  './tests/specs/regressions/*.js',
 ],
 suites: {
     smoke: [
-      './tests/specs/web/newCustomerAngular.js',
-      './tests/specs/web/newCustomerBindows.js',
-      './tests/specs/web/scheduleAppointment.js',
-      './tests/specs/web/recievePayment.js'
+      //'./tests/specs/smoke/smokeNewCustomerAngular.js',
+      //'./tests/specs/smoke/smokeNewCustomerBindows.js',
+      //'./tests/specs/smoke/smokeScheduleAppointment.js',
+      //'./tests/specs/smoke/smokeRecievePayment.js',
+      './tests/specs/smoke/smokeCreateLeadBrioSales.js'
+    ],
+    regressions: [
+      './tests/specs/regressions/customersAppointments.js'
     ]
 },
 
 
-services: ['selenium-standalone'],
+services: ['selenium-standalone', 'firefox-profile'], 
+
+          firefoxProfile: {
+            "geo.enabled": true,
+            "geo.provider.use_corelocation": true,
+            "geo.prompt.testing": true,
+            "geo.prompt.testing.allow": true,
+            "geo.wifi.uri": "file:///C:/Users/sonje/code/wbdrioTests/geoLocation.json"
+
+          },
+
 baseUrl: 'https://test.briostack.com',
 framework: 'jasmine',
 logDir: './logs',

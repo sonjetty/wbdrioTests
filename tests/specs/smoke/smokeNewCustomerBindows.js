@@ -2,15 +2,15 @@ var basicUtils = require('../../pageobjects/basicUtils.page');
 var customersTab = require('../../pageobjects/customersTab.page');
 
 let serviceCategory = [
-    "Bed Bug ",
-    "GPC"
+    "Bed Bug Service",
+    "Rodent Service"
 ];
 
 let randomDay = Math.floor((Math.random() * 28) + 1);
 
 describe('new customers page test bindows', () => {
     it('should log in and then go to the office app', () => {
-        basicUtils.loginWebCommand('bryceTester1', 'demo8011')
+        basicUtils.loginWebCommand('admin', 'demo8011')
         basicUtils.goToApp('office')
     });
     
@@ -22,8 +22,8 @@ describe('new customers page test bindows', () => {
     });
     
     it('should complete step 1 of creating a new customer', () => {
-        browser.waitForExist('//iframe[@src = "/ui/control/bindows"]')
-        const iframe = $('iframe[src = "/ui/control/bindows"]').value;
+        browser.waitForExist('//iframe[@src = "/uitest/ui/control/bindows"]')
+        const iframe = $('iframe[src = "/uitest/ui/control/bindows"]').value;
         browser.frame(iframe)
 
         //fills out regular fields
@@ -54,21 +54,21 @@ describe('new customers page test bindows', () => {
        customersTab.dropdownBranchOld.waitForVisible()
        customersTab.dropdownBranchOld.click()
        $('(//input[@tabindex="0"])[3]').waitForVisible()
-       $('(//input[@tabindex="0"])[3]').setValue('Raleigh')
-       $('//div[text() = "Raleigh"]').waitForVisible()
-       $('//div[text() = "Raleigh"]').click()
+       $('(//input[@tabindex="0"])[3]').setValue('Main Branch')
+       $('//div[text() = "Main Branch"]').waitForVisible()
+       $('//div[text() = "Main Branch"]').click()
 
        customersTab.dropdownStateOld.waitForVisible()
        customersTab.dropdownStateOld.click()
        $('(//input[@tabindex="0"])[1]').waitForVisible()
-       $('(//input[@tabindex="0"])[1]').setValue('Raleigh')
+       $('(//input[@tabindex="0"])[1]').setValue('Utah')
        $('//div[text() = "Utah"]').waitForVisible()
        $('//div[text() = "Utah"]').click()
 
        customersTab.dropdownCountyOld.waitForVisible()
        customersTab.dropdownCountyOld.click()
        $('(//input[@tabindex="0"])[2]').waitForVisible()
-       $('(//input[@tabindex="0"])[2]').setValue('Raleigh')
+       $('(//input[@tabindex="0"])[2]').setValue('Utah')
        $('(//div[text() = "Utah"])[2]').waitForVisible()
        $('(//div[text() = "Utah"])[2]').click()
 
