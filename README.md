@@ -12,7 +12,7 @@ Note: make sure you have installed java on your computer. If you run into any pr
 
 5. Find the `chromedriver.exe` file inside of the project and delete it. Add the chromdriver file you downloaded to node_modules>chromedriver>lib.
 
-6. for web testing run `npm run web', to run a specific suite run either 'npm run web.smoke' or 'npm run web.reg'
+6. for web testing run `npm run web`, to run a specific suite run either `npm run web.smoke` or `npm run web.reg`
 
 ## Config
 This uses a specific config for iOS and Android, see [configs](./config/) and are based on `wdio.shared.conf.js`.
