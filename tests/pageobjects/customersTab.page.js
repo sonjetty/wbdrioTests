@@ -309,7 +309,7 @@ class customersTab extends Page {
     //*************************Functions for Bindows pages***********************************/
         customerSelectorById (id){
             if (browser.desiredCapabilities.browserName === 'firefox'){
-                browser.pause(5000)
+                browser.pause(7000)
             }    
             this.fieldAccountId.waitForVisible()
             this.fieldAccountId.click()

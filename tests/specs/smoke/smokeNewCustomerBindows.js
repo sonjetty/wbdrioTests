@@ -28,7 +28,7 @@ describe('new customers page test bindows', () => {
 
         //fills out regular fields
         if (browser.desiredCapabilities.browserName === 'firefox'){
-            browser.pause(6000)
+            browser.pause(8000)
         } 
         customersTab.fieldFirstNameOld.waitForVisible()
         customersTab.fieldFirstNameOld.setValue('Jim')

@@ -16,10 +16,10 @@ describe('add appointment through Customers tab bindows', () => {
         browser.waitForExist('//iframe[@src = "/uitest/ui/control/bindows"]')
         const iframe = $('iframe[src = "/uitest/ui/control/bindows"]').value;
         browser.frame(iframe)
-
         customersTab.customerSelectorById('10005')
         customersTab.perspectTicketsAppts.waitForVisible()
         customersTab.perspectTicketsAppts.click()
+        browser.pause(2000)
         customersTab.perspectTicketsAppts.click()
         
         browser.pause(500)

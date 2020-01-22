@@ -9,9 +9,12 @@ describe('new customers page test Angular', () => {
     });
     
     it('should go to the new customers view inside of customers tab', () => {
+        //pause increases reliability when run in parallel
+        browser.pause(2000)
         basicUtils.tabCustomers.waitForVisible()
         basicUtils.tabCustomers.click()
-        browser.pause(5000)
+        //pause increased reliability when run in parallel
+        browser.pause(7000)
         customersTab.viewNewCustomers.waitForVisible()
         customersTab.viewNewCustomers.click()
         customersTab.viewNewCustomers.click()

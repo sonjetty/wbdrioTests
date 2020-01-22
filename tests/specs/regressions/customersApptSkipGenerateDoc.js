@@ -44,8 +44,8 @@ describe('tests skipping appointment functionality and generating a doc', () => 
             $('(//tbody)[3]/tr[2]/td[1]').waitForVisible()
             $('(//tbody)[3]/tr[2]/td[1]').click()
         }else{  
-        $('(//tbody)[3]/tr[1]/td[1]').waitForVisible()
-        $('(//tbody)[3]/tr[1]/td[1]').click()
+            $('(//tbody)[3]/tr[1]/td[1]').waitForVisible()
+            $('(//tbody)[3]/tr[1]/td[1]').click()
         }
         customersTab.buttonFinish.waitForVisible()
         customersTab.buttonFinish.click()    
