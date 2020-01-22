@@ -8,9 +8,9 @@ Note: make sure you have installed java on your computer. If you run into any pr
 
 3. run `npm i`
 
-4. download chromedriver 78 https://chromedriver.storage.googleapis.com/index.html?path=78.0.3904.70/
+4. (this step is depricated) download chromedriver 78 https://chromedriver.storage.googleapis.com/index.html?path=78.0.3904.70/
 
-5. Find the `chromedriver.exe` file inside of the project and delete it. Add the chromdriver file you downloaded to node_modules>chromedriver>lib.
+5. (this step is depricated) Find the `chromedriver.exe` file inside of the project and delete it. Add the chromdriver file you downloaded to node_modules>chromedriver>lib.
 
 6. for web testing run `npm run web`, to run a specific suite run either `npm run web.smoke` or `npm run web.reg`
 
