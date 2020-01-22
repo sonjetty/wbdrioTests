@@ -25,7 +25,7 @@ capabilities: [
     browserName: 'chrome',
     chromeOptions: {
       args: [
-        //'--headless',
+        '--headless',
         //'disable-web-security',
         //'allow-running-insecure-content',
         //'user-data-dir=/Users/joltdev/Library/Application\ Support/Google/Chrome',
@@ -37,7 +37,7 @@ capabilities: [
     browserName: 'firefox',
     "moz:firefoxOptions": {
     args: [
-       // '-headless'
+        '-headless'
     ]}
   },
 
@@ -53,14 +53,18 @@ specs: [
 ],
 suites: {
     smoke: [
-      //'./tests/specs/smoke/smokeNewCustomerAngular.js',
-      //'./tests/specs/smoke/smokeNewCustomerBindows.js',
-      //'./tests/specs/smoke/smokeScheduleAppointment.js',
-      //'./tests/specs/smoke/smokeRecievePayment.js',
+      './tests/specs/smoke/smokeNewCustomerAngular.js',
+      './tests/specs/smoke/smokeNewCustomerBindows.js',
+      './tests/specs/smoke/smokeScheduleAppointment.js',
+      './tests/specs/smoke/smokeRecievePayment.js',
       './tests/specs/smoke/smokeCreateLeadBrioSales.js'
     ],
     regressions: [
-      './tests/specs/regressions/customersAppointments.js'
+      './tests/specs/regressions/customersApptNew.js',
+      './tests/specs/regressions/customersApptPoolCancel.js',
+      './tests/specs/regressions/customersApptLockUnlock.js',
+      './tests/specs/regressions/customersApptSkipGenerateDoc.js',
+      './tests/specs/regressions/customersApptChangeSched.js',
     ]
 },
 

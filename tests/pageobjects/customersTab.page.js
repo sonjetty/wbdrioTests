@@ -124,8 +124,25 @@ class customersTab extends Page {
         get tabBilling () { return $('//div[text() =  " Billing "]'); }
         get buttonAddAppointment () { return $('//div/span[@class = "icon-plus"]'); }
 
-        //**********Add New Appointment Selectors Angular******** */
-            //Step 1 Selectors
+        //**********Appointment Selectors Angular******** */
+        get dropdownActions () { return $('//span[text()  = "Actions..."]'); }
+        get optionServiceAppointment () { return $('//span[text()  = "//span[text()  = "Service Appointment..."]"]'); }
+        get optionAddToAppointmentPool () { return $('//span[text()  = "Add to Appointment Pool"]'); }
+        get optionLockAppointment () { return $('//span[text()  = "Lock Appointment"]'); }
+        get optionUnlockAppointment () { return $('//span[text()  = "Unlock Appointment"]'); }
+        get optionSkipAppointment () { return $('//span[text()  = "Skip Appointment"]'); }
+        get optionCancelAppointment () { return $('//span[text()  = "Cancel Appointment"]'); }
+        get optionGenerateDoc () { return $('//span[text()  = "Generate Document..."]'); }
+        get optionCloseAppointment () { return $('//span[text()  = "Close Appointment"]'); }
+        get optionChangePrice () { return $('//span[text()  = "Change Appointment Price"]'); }
+        get buttonCloseDialog () { return $('(//span[@class="fa fa-fw fa-close"])[6]'); }
+        get buttonYesDialog () { return $('(//span[text() = "Yes"])[6]'); }
+        get buttonNoDialog () { return $('(//span[text() = "No"])[6]'); }
+        get buttonChangeSched () { return $('//span[text()  = "Change Schedule"]'); }
+        get buttonSchedule () { return $('//button[not (@disabled)]//span[text() = "Schedule"]'); }
+        get buttonCancelSchedule () { return $('//span[text() = "Cancel"]'); }
+
+            //Create New Appointment Step 1 Selectors
         get statStep1Header () { return $('//h3[text() = " New Appointment "]/span[text() = " Step 1 of 2"]'); }
         get statGeneralHeader () { return $('//h3[text() = "General"]'); }
         get statDetailsHeader () { return $('//h3[text() = "Details"]'); }
@@ -141,14 +158,14 @@ class customersTab extends Page {
         get fieldNotes () { return $('//textarea[@formcontrolname="note"]'); }
         get buttonNext () { return $('//span[text() = "Next"]'); }
         get buttonCancel () { return $('//span[text() = "Cancel"]'); }
-            //Step 2 Selectors
+            //Create New Appointment Step 2 Selectors
         get statStep2Header () { return $('//h3[text() = " New Appointment "]/span[text() = " Step 2 of 2"]'); }
         get statSchedApptHeader () { return $('//h3[text() = "Schedule Appointment"]'); }
         get statApptWindowsHeader () { return $('//div[text() = "Appointment Windows"]'); }
-        get toggleSelectTechnicians () { return $('//span[text() = " Technician "]/i'); }
+        get toggleSelectTechnicians () { return $('//span[text() = " Technician "]'); }
         get buttonPrevious () { return $('//span[text() = "Previous"]'); }
         get buttonFinish () { return $('//button[not (@disabled)]//span[text() = "Finish"]'); }
-        
+
         //***********Add New Customer Selectors Angular*************
         get newCustomerButton () { return $('//div/span[@class = "icon-plus"]'); }
         get buttonCloseAngular () { return $('//span[text() = "Close"]'); }
@@ -228,6 +245,7 @@ class customersTab extends Page {
         }
 
         customerFinderAndSelector (customerId){
+            browser.pause(6000)
             this.buttonCustomerFinder.waitForVisible()
             this.buttonCustomerFinder.click()
             this.fieldCustomerFinder.waitForVisible()
