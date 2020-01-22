@@ -6,13 +6,13 @@ Note: make sure you have installed java on your computer. If you run into any pr
 2. use nvm to install node version 8 (v8.16.2).  (You will need to install nvm first from here: https://github.com/coreybutler/nvm-windows)
     - the main commands you will want to use are `nvm install <version>` and `nvm use <version>`
 
-3. run `npm i` (note: it is unlikely but you may need to run `npm install @wdio/jasmine-framework --save-dev`)
+3. run `npm i`
 
 4. download chromedriver 78 https://chromedriver.storage.googleapis.com/index.html?path=78.0.3904.70/
 
 5. Find the `chromedriver.exe` file inside of the project and delete it. Add the chromdriver file you downloaded to node_modules>chromedriver>lib.
 
-6. for web testing run `npm run web', to run a specific suite (currently there is only 1 suite) run 'npm run web.suite1'
+6. for web testing run `npm run web`, to run a specific suite run either `npm run web.smoke` or `npm run web.reg`
 
 ## Config
 This uses a specific config for iOS and Android, see [configs](./config/) and are based on `wdio.shared.conf.js`.
@@ -31,8 +31,3 @@ const SELECTORS = {
         : '*//XCUIElementTypeWebView',
 };
 ```
-
-## Automating Chrome or Safari
-Mobile web automation is almost the same as writing tests for desktop browsers. The only difference can be found in the configuration that needs to be used.
-Click [here](./config/wdio.ios.browser.conf.js) to find the config for iOS Safari and [here](./config/wdio.android.browser.conf.js)) for Android Chrome.
-For Android be sure that the lastest version of Chrome is installed, see also [here](./docs/FAQ.md#i-get-the-error-no-chromedriver-found-that-can-automate-chrome-).
