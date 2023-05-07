@@ -38,7 +38,7 @@
   "devDependencies": {
     "@wdio/cli": "^5.16.11",
     "@wdio/jasmine-framework": "^5.16.11",
-    "appium": "^1.4",
+    "appium": "^1.15",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^9.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
@@ -60,6 +60,6 @@
     "wdio-jasmine-framework": "^0.3.6",
     "wdio-selenium-standalone-service": "0.0.12",
     "wdio-spec-reporter": "^0.1.5",
-    "webdriverio": "^4.14.4"
+    "webdriverio": "^8.10.0"
   }
 }
